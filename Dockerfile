@@ -1,5 +1,5 @@
-FROM httpd:latest
-WORKDIR /usr/local/apache2/htdocs
-COPY ./dist /usr/local/apache2/htdocs
+FROM nginx:latest
+COPY nginx-config/nginx.conf /etc/nginx/nginx.conf
+COPY website/ /usr/share/nginx/html/
 EXPOSE 80
-CMD ["httpd-foreground"]
+CMD ["nginx", "-g", "daemon off;"]
